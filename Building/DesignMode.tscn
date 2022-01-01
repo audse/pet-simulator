@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Building/DesignMode.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Tiles/ConstructTileSet.tres" type="TileSet" id=2]
+
+[node name="DesignMode" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Structure" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 24, 24 )
+format = 1
+tile_data = PoolIntArray( 131073, 0, 8, 131074, 0, 10, 131075, 0, 10, 131076, 0, 11, 196609, 0, 65544, 196610, 0, 131081, 196611, 0, 131081, 196612, 0, 65542, 196613, 0, 11, 262145, 0, 65544, 262146, 0, 131081, 262147, 0, 131081, 262148, 0, 131078, 262149, 0, 196619, 327681, 0, 65544, 327682, 0, 131081, 327683, 0, 131081, 327684, 0, 131083, 393217, 0, 196616, 393218, 0, 131077, 393219, 0, 131078, 393220, 0, 196619, 458754, 0, 196616, 458755, 0, 196619 )
+
+[node name="Wallpaper" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="Flooring" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="Facade" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="Roof" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="Roof2" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 24, 24 )
+format = 1

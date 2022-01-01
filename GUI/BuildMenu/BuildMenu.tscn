@@ -1,0 +1,155 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GUI/BuildMenu/BuildMenu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Themes/Theme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Sprites/GUI/icon_hammer.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/GUI/icon_chair.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/GUI/icon_roller.png" type="Texture" id=6]
+[ext_resource path="res://Nodes/FloatButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Themes/Panel.tres" type="StyleBox" id=9]
+[ext_resource path="res://Assets/Fonts/Abaddon Bold.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+outline_size = 1
+outline_color = Color( 1, 1, 1, 0.392157 )
+extra_spacing_top = 20
+extra_spacing_char = 1
+font_data = ExtResource( 10 )
+
+[node name="BuildMenu" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 74 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+custom_constants/separation = -5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 240.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_left = 207.0
+margin_right = 240.0
+margin_bottom = 25.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Build"
+
+[node name="Margin" type="MarginContainer" parent="."]
+show_behind_parent = true
+margin_top = 20.0
+margin_right = 240.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 41 )
+mouse_filter = 2
+theme = ExtResource( 3 )
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="Margin"]
+visible = false
+margin_right = 240.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 0
+custom_constants/hseparation = 5
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Construct" parent="Margin/Grid" instance=ExtResource( 8 )]
+margin_right = 70.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+text = "Construct"
+
+[node name="Icon" type="TextureRect" parent="Margin/Grid/Construct"]
+anchor_right = 1.0
+margin_top = 14.0
+margin_bottom = 14.0
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Design" parent="Margin/Grid" instance=ExtResource( 8 )]
+margin_left = 75.0
+margin_right = 145.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+text = "Design"
+start_delay = 0.1
+
+[node name="Icon" type="TextureRect" parent="Margin/Grid/Design"]
+anchor_right = 1.0
+margin_top = 14.0
+margin_bottom = 14.0
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+flip_h = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Furnish" parent="Margin/Grid" instance=ExtResource( 8 )]
+margin_left = 150.0
+margin_right = 220.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+text = "Furnish"
+start_delay = 0.3
+
+[node name="Icon" type="TextureRect" parent="Margin/Grid/Furnish"]
+anchor_right = 1.0
+margin_top = 14.0
+margin_bottom = 14.0
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_pressed"]
+[connection signal="pressed" from="Margin/Grid/Construct" to="." method="_on_Construct_Button_pressed"]

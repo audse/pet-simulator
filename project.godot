@@ -1,0 +1,82 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Construct",
+"language": "GDScript",
+"path": "res://Building/Construct.gd"
+}, {
+"base": "Node2D",
+"class": "ConstructRoom",
+"language": "GDScript",
+"path": "res://Building/ConstructRoom.gd"
+}, {
+"base": "Node2D",
+"class": "ConstructWall",
+"language": "GDScript",
+"path": "res://Building/ConstructWall.gd"
+}, {
+"base": "Node2D",
+"class": "Drag",
+"language": "GDScript",
+"path": "res://Nodes/Drag.gd"
+} ]
+_global_script_class_icons={
+"Construct": "",
+"ConstructRoom": "",
+"ConstructWall": "",
+"Drag": ""
+}
+
+[application]
+
+config/name="pet-simulator"
+run/main_scene="res://Scenes/Main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Tweens="*res://Scripts/Static/Tweens.gd"
+Globals="*res://Scripts/Static/Globals.gd"
+Timers="*res://Scripts/Static/Timers.gd"
+States="*res://Scripts/Static/States.gd"
+Events="*res://Scripts/Static/Events.gd"
+
+[display]
+
+window/size/width=240
+window/size/height=360
+window/size/test_width=480
+window/size/test_height=720
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[input]
+
+ui_touch={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+environment/default_environment="res://default_env.tres"

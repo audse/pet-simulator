@@ -1,0 +1,125 @@
+[gd_resource type="Theme" load_steps=26 format=2]
+
+[ext_resource path="res://Assets/Themes/Panel.tres" type="StyleBox" id=1]
+[ext_resource path="res://Assets/Fonts/Abbadon.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Themes/Button_Pressed.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/Themes/Button_Normal.tres" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Themes/Button_Disabled.tres" type="StyleBox" id=5]
+[ext_resource path="res://Assets/Themes/Button_Font_Bold.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Assets/Sprites/GUI/toggle_on.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/GUI/toggle_on_disabled.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/GUI/toggle_off.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/GUI/toggle_off_disabled.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/GUI/progress_inside.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Themes/Font_Bold.tres" type="DynamicFontData" id=12]
+[ext_resource path="res://Assets/Sprites/GUI/panel.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Themes/Font.tres" type="DynamicFontData" id=14]
+[ext_resource path="res://Assets/Themes/Panel_Inset.tres" type="StyleBox" id=15]
+[ext_resource path="res://Assets/Themes/Panel_Inset_Disabled.tres" type="StyleBox" id=16]
+[ext_resource path="res://Assets/Sprites/GUI/panel_inset_focus.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Themes/Font_Light.tres" type="DynamicFont" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="DynamicFont" id=4]
+extra_spacing_bottom = -2
+extra_spacing_char = 1
+font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 26, 26 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 10.0
+margin_bottom = 8.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color( 0.709804, 0.862745, 1, 1 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 24, 24 )
+margin_left = 6.0
+margin_right = 6.0
+margin_top = 6.0
+margin_bottom = 6.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 1, 1, 1, 0.490196 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 24, 24 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 6.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 24, 24 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+default_font = ExtResource( 2 )
+Button/colors/font_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+Button/colors/font_color_disabled = Color( 0.133333, 0.133333, 0.133333, 0.392157 )
+Button/colors/font_color_focus = Color( 0.133333, 0.133333, 0.133333, 1 )
+Button/colors/font_color_hover = Color( 0.133333, 0.133333, 0.133333, 1 )
+Button/colors/font_color_pressed = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+Button/fonts/font = ExtResource( 6 )
+Button/styles/disabled = ExtResource( 5 )
+Button/styles/focus = SubResource( 7 )
+Button/styles/hover = ExtResource( 4 )
+Button/styles/normal = ExtResource( 4 )
+Button/styles/pressed = ExtResource( 3 )
+CheckButton/icons/off = ExtResource( 9 )
+CheckButton/icons/off_disabled = ExtResource( 10 )
+CheckButton/icons/on = ExtResource( 7 )
+CheckButton/icons/on_disabled = ExtResource( 8 )
+Label/colors/font_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+Label/fonts/font = ExtResource( 18 )
+LineEdit/colors/clear_button_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+LineEdit/colors/cursor_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.133333, 0.133333, 0.133333, 0.490196 )
+LineEdit/colors/selection_color = Color( 0.72549, 0.776471, 0.858824, 1 )
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 8 )
+LineEdit/styles/normal = ExtResource( 15 )
+LineEdit/styles/read_only = ExtResource( 16 )
+Panel/styles/panel = ExtResource( 1 )
+PopupMenu/colors/font_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+PopupMenu/constants/hseparation = 10
+PopupMenu/constants/vseparation = 10
+PopupMenu/styles/panel = SubResource( 5 )
+ProgressBar/colors/font_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+ProgressBar/fonts/font = SubResource( 1 )
+ProgressBar/styles/bg = SubResource( 2 )
+ProgressBar/styles/fg = SubResource( 3 )
+TextEdit/colors/font_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.133333, 0.133333, 0.133333, 0.490196 )
+TextEdit/styles/normal = ExtResource( 15 )
+TextEdit/styles/read_only = ExtResource( 16 )

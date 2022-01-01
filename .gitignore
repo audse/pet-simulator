@@ -1,0 +1,7 @@
+*.aseprite
+*.import
+.import
+*.png
+*.png.import
+*.ttf
+Assets/Shaders/CRTShader.shader
