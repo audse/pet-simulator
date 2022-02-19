@@ -1,0 +1,429 @@
+{
+    "designs": {
+        "path": "res://Assets/Tiles/Design/",
+        "types": [
+            {
+                "id": "exterior",
+                "path": "Exterior/png/",
+                "categories": [
+                    {
+                        "id": "brick",
+                        "path": "brick/",
+                        "tiles": [
+                            {
+                                "id": "basic_brick",
+                                "path": "basic_brick",
+                                "is_single_tile": true,
+                                "options": [
+                                    "red_500"
+                                ]
+                            },
+                            {
+                                "id": "plaster_brick",
+                                "path": "plaster_brick",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "paint",
+                        "path": "paint/",
+                        "tiles": []
+                    },
+                    {
+                        "id": "siding",
+                        "path": "siding/",
+                        "tiles": [
+                            {
+                                "id": "basic_siding",
+                                "path": "basic_siding",
+                                "is_single_tile": true,
+                                "options": [
+                                    "slate_200"
+                                ]
+                            },
+                            {
+                                "id": "basic_foundation_siding",
+                                "path": "basic_foundation_siding",
+                                "is_single_tile": true,
+                                "options": [
+                                    "slate_200",
+                                    "grey_500"
+                                ]
+                            },
+                            {
+                                "id": "weatherboard",
+                                "path": "weatherboard",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200"
+                                ]
+                            },
+                            {
+                                "id": "post_large_siding",
+                                "path": "post_large_siding",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_200",
+                                    "grey_300",
+                                    "grey_400"
+                                ]
+                            },
+                            {
+                                "id": "post_midsize_siding",
+                                "path": "post_midsize_siding",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_800",
+                                    "grey_900"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stone",
+                        "path": "stone/",
+                        "tiles": [
+                            {
+                                "id": "castle_stone",
+                                "path": "castle_stone",
+                                "is_single_tile": true,
+                                "options": [
+                                    "grey_500",
+                                    "slate_700"
+                                ]
+                            },
+                            {
+                                "id": "garden_stone",
+                                "path": "garden_stone",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_500"
+                                ]
+                            },
+                            {
+                                "id": "layered_stone",
+                                "path": "layered_stone",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stucco",
+                        "path": "stucco/",
+                        "tiles": [
+                            {
+                                "id": "wood_beam_stucco",
+                                "path": "wood_beam_stucco",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200"
+                                ]
+                            },
+                            {
+                                "id": "brick_beam_plaster",
+                                "path": "brick_beam_plaster",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_600",
+                                    "grey_700",
+                                    "grey_800",
+                                    "grey_900"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "wood",
+                        "path": "wood/",
+                        "tiles": [
+                            {
+                                "id": "soft_planks",
+                                "path": "soft_planks",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200"
+                                ]
+                            },
+                            {
+                                "id": "modern_thin_planks",
+                                "path": "modern_thin_planks",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_700"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "floor",
+                "path": "Floors/png/",
+                "categories": [
+                    {
+                        "id": "carpet",
+                        "path": "carpet/",
+                        "tiles": [
+                            {
+                                "id": "small_stripe",
+                                "path": "small_stripe",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_100",
+                                    "brown_200",
+                                    "brown_400"
+                                ]
+                            },
+                            {
+                                "id": "thick_frieze",
+                                "path": "thick_frieze",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200",
+                                    "brown_400"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tile",
+                        "path": "tile/",
+                        "tiles": [
+                            {
+                                "id": "basic_tile",
+                                "path": "basic_tile",
+                                "is_single_tile": true,
+                                "options": [
+                                    "grey_100",
+                                    "slate_400"
+                                ]
+                            },
+                            {
+                                "id": "ornate_porcelain",
+                                "path": "ornate_porcelain",
+                                "is_single_tile": true,
+                                "options": [
+                                    "slate_100"
+                                ]
+                            },
+                            {
+                                "id": "little_diamonds",
+                                "path": "little_diamonds",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200"
+                                ]
+                            },
+                            {
+                                "id": "little_checkered_diamonds",
+                                "path": "little_checkered_diamonds",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_300"
+                                ]
+                            },
+                            {
+                                "id": "corner_porcelain",
+                                "path": "corner_porcelain",
+                                "is_single_tile": true,
+                                "options": [
+                                    "blue_100"
+                                ]
+                            },
+                            {
+                                "id": "ornate_tile",
+                                "path": "ornate_tile",
+                                "is_single_tile": true,
+                                "options": [
+                                    "slate_200"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "wood",
+                        "path": "wood/",
+                        "tiles": [
+                            {
+                                "id": "basic_hardwood",
+                                "path": "basic_hardwood",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_500"
+                                ]
+                            },
+                            {
+                                "id": "beach_wood",
+                                "path": "beach_wood",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_300"
+                                ]
+                            },
+                            {
+                                "id": "aged_hardwood",
+                                "path": "aged_hardwood",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_200",
+                                    "brown_600"
+                                ]
+                            },
+                            {
+                                "id": "square_parquet",
+                                "path": "square_parquet",
+                                "is_single_tile": true,
+                                "options": [
+                                    "grey_100",
+                                    "brown_600"
+                                ]
+                            },
+                            {
+                                "id": "modern_panel",
+                                "path": "modern_panel",
+                                "is_single_tile": true,
+                                "options": [
+                                    "brown_100"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "interior",
+                "path": "Interior/png/",
+                "categories": [
+                    {
+                        "id": "paint",
+                        "path": "paint/",
+                        "tiles": [
+                            {
+                                "id": "crown_moulding",
+                                "path": "crown_moulding/crown_moulding",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_100"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "panel",
+                        "path": "panel/",
+                        "tiles": [
+                            {
+                                "id": "half_panel",
+                                "path": "half_panel/half_panel",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_100"
+                                ]
+                            },
+                            {
+                                "id": "block_panel",
+                                "path": "block_panel/block_panel",
+                                "is_single_tile": false,
+                                "options": [
+                                    "brown_700"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "wallpaper",
+                        "path": "wallpaper/",
+                        "tiles": [
+                            {
+                                "id": "ornate_bright",
+                                "path": "ornate_bright/ornate_bright",
+                                "is_single_tile": false,
+                                "options": [
+                                    "orange_500",
+                                    "teal_600",
+                                    "purple_600"
+                                ]
+                            },
+                            {
+                                "id": "bright_clouds",
+                                "path": "bright_clouds",
+                                "is_single_tile": false,
+                                "options": [
+                                    "blue_400"
+                                ]
+                            },
+                            {
+                                "id": "leafy_vines",
+                                "path": "leafy_vines",
+                                "is_single_tile": false,
+                                "options": [
+                                    "brown_green_100"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "roof",
+                "path": "Roof/png/",
+                "categories": [
+                    {
+                        "id": "shingle",
+                        "path": "shingle/",
+                        "tiles": [
+                            {
+                                "id": "rustic_shingle",
+                                "path": "rustic_shingle",
+                                "is_single_tile": false,
+                                "options": [
+                                    "slate_700"
+                                ]
+                            },
+                            {
+                                "id": "simple_shingle",
+                                "path": "simple_shingle",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_600",
+                                    "brown_600",
+                                    "brown_300"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "plank",
+                        "path": "plank/",
+                        "tiles": [
+                            {
+                                "id": "modern_plank",
+                                "path": "modern_plank",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_800"
+                                ]
+                            },
+                            {
+                                "id": "simple_plank",
+                                "path": "simple_plank",
+                                "is_single_tile": false,
+                                "options": [
+                                    "grey_900",
+                                    "red_500"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
