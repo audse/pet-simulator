@@ -1,0 +1,376 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Assets/Fonts/ttf/Nunito/Nunito-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Shaders/gradient_fill.gdshader" type="Shader" id=2]
+[ext_resource path="res://Assets/Fonts/ttf/Nunito/Nunito-Black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/hunger_icon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/bath_icon.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/tennis_ball_icon.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/pillow_icon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/moon_icon.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Objects/Pet/Components/Info/Needs/needs_renderer.gd" type="Script" id=10]
+
+[sub_resource type="StyleBoxFlat" id=18]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.223529, 0.345098, 0.458824, 0.0980392 )
+border_width_left = 2
+border_width_top = 10
+border_width_right = 2
+border_color = Color( 0.239216, 0.364706, 0.509804, 0.196078 )
+border_blend = true
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
+corner_detail = 20
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_offset = Vector2( 0, 6 )
+
+[sub_resource type="Gradient" id=21]
+colors = PoolColorArray( 0.45098, 0.513726, 0.560784, 0.392157, 0.34902, 0.403922, 0.45098, 0.588235 )
+
+[sub_resource type="GradientTexture" id=22]
+gradient = SubResource( 21 )
+
+[sub_resource type="ShaderMaterial" id=20]
+shader = ExtResource( 2 )
+shader_param/gradient = SubResource( 22 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+extra_spacing_top = -2
+extra_spacing_char = 6
+font_data = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0, 0.372617, 0.65338, 0.818024, 0.913345, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.985415, 0.986597, 0.990145, 1, 0.948327, 0.952516, 0.965086, 1, 0.909981, 0.917279, 0.939176, 1, 0.854902, 0.866667, 0.901961, 1, 0.998662, 0.998771, 0.999096, 1 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
+
+[sub_resource type="ShaderMaterial" id=25]
+shader = ExtResource( 2 )
+shader_param/gradient = SubResource( 24 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+extra_spacing_char = 4
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0.784314 )
+border_color = Color( 0.847059, 0.890196, 0.92549, 0.686275 )
+border_blend = true
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+corner_detail = 20
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 0, 0, 0, 0.0980392 )
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0784314 )
+shadow_offset = Vector2( 0, 6 )
+
+[node name="NeedsRenderer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+med_color = Color( 0.819608, 0.709804, 0.215686, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 960.0
+margin_bottom = 1440.0
+
+[node name="NeedsPanel" type="PanelContainer" parent="."]
+margin_right = 960.0
+margin_bottom = 1440.0
+custom_styles/panel = SubResource( 18 )
+
+[node name="NeedsContainer" type="VBoxContainer" parent="NeedsPanel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 940.0
+margin_bottom = 1420.0
+custom_constants/separation = 20
+
+[node name="HungerContainer" type="HBoxContainer" parent="NeedsPanel/NeedsContainer"]
+margin_right = 920.0
+margin_bottom = 70.0
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="NeedsPanel/NeedsContainer/HungerContainer"]
+material = SubResource( 20 )
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NeedsPanel/NeedsContainer/HungerContainer"]
+margin_left = 120.0
+margin_right = 920.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="NeedsPanel/NeedsContainer/HungerContainer/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "MUNCHY"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HungerBar" type="ProgressBar" parent="NeedsPanel/NeedsContainer/HungerContainer/VBoxContainer"]
+self_modulate = Color( 0.8, 0.705882, 0.254902, 1 )
+material = SubResource( 25 )
+margin_top = 31.0
+margin_right = 800.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActivityContainer" type="HBoxContainer" parent="NeedsPanel/NeedsContainer"]
+margin_top = 90.0
+margin_right = 920.0
+margin_bottom = 160.0
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="NeedsPanel/NeedsContainer/ActivityContainer"]
+material = SubResource( 20 )
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NeedsPanel/NeedsContainer/ActivityContainer"]
+margin_left = 120.0
+margin_right = 920.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="NeedsPanel/NeedsContainer/ActivityContainer/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "PLAY!"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActivityBar" type="ProgressBar" parent="NeedsPanel/NeedsContainer/ActivityContainer/VBoxContainer"]
+self_modulate = Color( 0.176471, 0.533333, 0.301961, 1 )
+material = SubResource( 25 )
+margin_top = 31.0
+margin_right = 800.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HygieneContainer" type="HBoxContainer" parent="NeedsPanel/NeedsContainer"]
+margin_top = 180.0
+margin_right = 920.0
+margin_bottom = 250.0
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="NeedsPanel/NeedsContainer/HygieneContainer"]
+material = SubResource( 20 )
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NeedsPanel/NeedsContainer/HygieneContainer"]
+margin_left = 120.0
+margin_right = 920.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="NeedsPanel/NeedsContainer/HygieneContainer/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "EWWW"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HygieneBar" type="ProgressBar" parent="NeedsPanel/NeedsContainer/HygieneContainer/VBoxContainer"]
+self_modulate = Color( 0.807843, 0.168627, 0.27451, 1 )
+material = SubResource( 25 )
+margin_top = 31.0
+margin_right = 800.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ComfortContainer" type="HBoxContainer" parent="NeedsPanel/NeedsContainer"]
+margin_top = 270.0
+margin_right = 920.0
+margin_bottom = 340.0
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="NeedsPanel/NeedsContainer/ComfortContainer"]
+material = SubResource( 20 )
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NeedsPanel/NeedsContainer/ComfortContainer"]
+margin_left = 120.0
+margin_right = 920.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="NeedsPanel/NeedsContainer/ComfortContainer/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "COMFY"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ComfortBar" type="ProgressBar" parent="NeedsPanel/NeedsContainer/ComfortContainer/VBoxContainer"]
+self_modulate = Color( 0.501961, 0.611765, 0.192157, 1 )
+material = SubResource( 25 )
+margin_top = 31.0
+margin_right = 800.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SleepContainer" type="HBoxContainer" parent="NeedsPanel/NeedsContainer"]
+margin_top = 360.0
+margin_right = 920.0
+margin_bottom = 430.0
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="NeedsPanel/NeedsContainer/SleepContainer"]
+material = SubResource( 20 )
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NeedsPanel/NeedsContainer/SleepContainer"]
+margin_left = 120.0
+margin_right = 920.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="NeedsPanel/NeedsContainer/SleepContainer/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "ZZZ"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SleepBar" type="ProgressBar" parent="NeedsPanel/NeedsContainer/SleepContainer/VBoxContainer"]
+self_modulate = Color( 0.803922, 0.392157, 0.231373, 1 )
+material = SubResource( 25 )
+margin_top = 31.0
+margin_right = 800.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

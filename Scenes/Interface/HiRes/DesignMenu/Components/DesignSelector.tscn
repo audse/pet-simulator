@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Interface/HiRes/DesignMenu/Components/design_selector.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/Control/Containers/ScrollColumnContainer/ScrollColumnContainer.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0 )
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 1, 1, 1, 1 )
+corner_detail = 20
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[node name="DesignSelector" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+initial_offset = 50.0
+border_stylebox = SubResource( 1 )
+
+[node name="ColumnContainer" parent="." index="1"]
+margin_bottom = -1090.91
+separation = Vector2( 20, 20 )
+is_square = true
+
+[node name="LeftButton" parent="LeftButtonContainer" index="0"]
+rect_rotation = 60.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+
+[node name="RightButton" parent="RightButtonContainer" index="0"]
+rect_rotation = 30.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+
+[node name="Drag" parent="." index="5"]
+z_index = 2

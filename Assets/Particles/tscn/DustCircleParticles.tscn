@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Particles/tres/dust_circle_particles.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Particles/png/dust_circle_particle.png" type="Texture" id=2]
+
+[node name="DustParticles" type="Particles2D"]
+emitting = false
+amount = 24
+one_shot = true
+explosiveness = 0.75
+randomness = 0.5
+fixed_fps = 24
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )

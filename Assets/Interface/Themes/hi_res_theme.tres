@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/white_button.tres" type="StyleBox" id=1]
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/white_button_pressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://Assets/Interface/Themes/HiResTheme/white_button_disabled.tres" type="StyleBox" id=3]
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://Assets/Fonts/ttf/Nunito/Nunito-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = SubResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Assets/Fonts/ttf/Nunito/Nunito-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = SubResource( 4 )
+
+[resource]
+default_font = SubResource( 5 )
+Button/colors/font_color = Color( 0.164706, 0.164706, 0.180392, 1 )
+Button/colors/font_color_disabled = Color( 0.164706, 0.164706, 0.180392, 0.490196 )
+Button/colors/font_color_focus = Color( 0.164706, 0.164706, 0.180392, 1 )
+Button/colors/font_color_hover = Color( 0.164706, 0.164706, 0.180392, 1 )
+Button/colors/font_color_pressed = Color( 0.164706, 0.164706, 0.180392, 1 )
+Button/fonts/font = SubResource( 7 )
+Button/styles/disabled = ExtResource( 3 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 1 )
+Button/styles/pressed = ExtResource( 2 )

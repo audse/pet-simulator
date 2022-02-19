@@ -1,0 +1,2 @@
+class_name NeedsComponent
+extends Node

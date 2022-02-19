@@ -1,0 +1,11 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D gradient;
+
+void fragment() {
+	vec4 col = texture(gradient, SCREEN_UV.yx);
+	COLOR = texture(TEXTURE,UV) * COLOR * col;
+}"

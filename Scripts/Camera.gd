@@ -9,6 +9,11 @@ var events = {}
 var last_drag_distance = 0
 var dragging_disabled:bool = false
 
+func _process(_delta:float) -> void:
+	# fix jitter
+	position = position.round()
+	force_update_scroll()
+	
 func _unhandled_input(event):
 	if event is InputEventScreenTouch and not dragging_disabled:
 		if event.pressed:

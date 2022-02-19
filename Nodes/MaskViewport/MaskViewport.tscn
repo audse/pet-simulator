@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Shaders/mask.gdshader" type="Shader" id=3]
+[ext_resource path="res://Nodes/MaskViewport/mask_viewport.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 3 )
+
+[node name="MaskViewport" type="ViewportContainer"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 960, 1440 )
+transparent_bg = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+gui_disable_input = true

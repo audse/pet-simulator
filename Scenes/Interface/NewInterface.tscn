@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Interface/Themes/hi_res_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/Interface/new_interface.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Interface/HiRes/MainMenu/MainMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Interface/HiRes/BuildMenu/BuildMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Interface/HiRes/DesignMenu/DesignMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Export/Screenshots/screenshot_01.png" type="Texture" id=9]
+
+[node name="NewInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_right = 840.0
+margin_bottom = 560.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildMenu" parent="." instance=ExtResource( 4 )]
+
+[node name="DesignMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="MainMenu" parent="." instance=ExtResource( 3 )]
+
+[connection signal="toggled" from="BuildMenu" to="." method="_on_BuildMenu_toggled"]
+[connection signal="build_button_pressed" from="MainMenu" to="." method="_on_MainMenu_build_button_pressed"]
+[connection signal="design_button_pressed" from="MainMenu" to="." method="_on_MainMenu_design_button_pressed"]
+[connection signal="furnish_button_pressed" from="MainMenu" to="." method="_on_MainMenu_furnish_button_pressed"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Nodes/Control/Snackbar/ActionSnackbar/action_snackbar.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Interface/Themes/FlatTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Nodes/Control/Snackbar/Snackbar.tscn" type="PackedScene" id=3]
+
+[node name="ActionSnackbar" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+
+[node name="Panel" parent="." index="0"]
+margin_top = 325.0
+
+[node name="BlurContainer" parent="Panel" index="0"]
+margin_bottom = 35.0
+
+[node name="BlurRect2" parent="Panel/BlurContainer" index="1"]
+margin_bottom = 2.0
+
+[node name="BlurRect3" parent="Panel/BlurContainer" index="2"]
+margin_top = 2.0
+margin_bottom = 7.0
+
+[node name="BlurRect4" parent="Panel/BlurContainer" index="3"]
+margin_top = 7.0
+margin_bottom = 16.0
+
+[node name="BlurRect5" parent="Panel/BlurContainer" index="4"]
+margin_top = 16.0
+margin_bottom = 25.0
+
+[node name="BlurRect6" parent="Panel/BlurContainer" index="5"]
+margin_top = 25.0
+margin_bottom = 35.0
+
+[node name="Margin" type="MarginContainer" parent="Panel" index="1"]
+margin_right = 240.0
+margin_bottom = 35.0
+theme = ExtResource( 2 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 25
+
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 230.0
+margin_bottom = 10.0

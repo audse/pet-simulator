@@ -4,4 +4,9 @@
 *.png
 *.png.import
 *.ttf
+*.svg
 Assets/Shaders/CRTShader.shader
+.DS_Store
+Assets/Fonts
+Todo.gd
+addons
