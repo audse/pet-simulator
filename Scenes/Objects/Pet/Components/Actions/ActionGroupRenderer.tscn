@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Nodes/Control/Containers/circle_container.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/grey_button.tres" type="StyleBox" id=2]
+[ext_resource path="res://addons/more_controls/nodes/containers/circle_container.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Interface/Buttons/grey_button.tres" type="StyleBox" id=2]
 [ext_resource path="res://Scenes/Objects/Pet/Components/Actions/action_group_renderer.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/x_icon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Interface/Icons/png/x_icon.png" type="Texture" id=4]
 [ext_resource path="res://Nodes/Control/PopButton/pop_button.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFontData" id=1]

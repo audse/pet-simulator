@@ -3,15 +3,12 @@ extends Node2D
 
 var _connect
 
-var data:BuildingData
-var input:BuildingInput
-var tile_manager:BuildingTileManager
+var data:BuildingData setget set_data, get_data
 
-func _init(
-	data_value:BuildingData,
-	input_value:BuildingInput,
-	tile_manager_value:BuildingTileManager
-) -> void:
+
+func set_data(data_value:BuildingData) -> void:
 	data = data_value
-	input = input_value
-	tile_manager = tile_manager_value
+
+
+func get_data() -> BuildingData:
+	return data

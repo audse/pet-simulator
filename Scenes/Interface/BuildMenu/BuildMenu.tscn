@@ -1,0 +1,690 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scenes/Interface/BuildMenu/Components/BuildHereMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Nodes/Control/ButtonExpansionMenu/hbox_button_expansion_menu_container.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Interface/Icons/png/check_icon.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Interface/BuildMenu/build_menu.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Interface/BuildMenu/Components/BuildObjectsMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Interface/BuildMenu/Components/DemolishMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Control/PopButton/pop_button.gd" type="Script" id=7]
+[ext_resource path="res://Nodes/Control/BlurRect/GradientBlurRect.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Animation" id=17]
+resource_name = "Open"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("GradientBlurRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, 0, 0, 0, 0, 1, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("GradientBlurRect:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1e-05, 0, 0, 0, 0, 1.2, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("PanelContainer:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("VBoxContainer/ModeLabelContainer:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 30, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("VBoxContainer/ModeLabelContainer:rect_scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("VBoxContainer/ModeLabelContainer:rect_scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.5 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/BuildHereMenu:rect_scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0, 0, 1, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.8 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/BuildHereMenu:rect_scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0, 0, 1, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.8 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/BuildHereMenu:rect_rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 30, -0.25, 0, 0, 0, 0, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.7 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("GradientBlurRect:rect_scale:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 1.3, 0, 0, 0, 0, 1, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("GradientBlurRect:rect_rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 5, 0, 0, 0, 0, 0, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("GradientBlurRect:anchor_left")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -0.1, 0, 0, 0, 0, 0, -0.4, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("GradientBlurRect:rect_pivot_offset:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 650, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("VBoxContainer/ModeLabelContainer/HBoxContainer/DoneButton:rect_scale:x")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 0, 0, 0, 0, 0, 1, -0.4, 0, 0, 0 ),
+"times": PoolRealArray( 0.3, 0.7 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("VBoxContainer/ModeLabelContainer/HBoxContainer/DoneButton:rect_scale:y")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 0, 0, 0, 0, 0, 1, -0.4, 0, 0, 0 ),
+"times": PoolRealArray( 0.3, 0.7 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("VBoxContainer/ModeLabelContainer/HBoxContainer/DoneButton:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 15, 0, 0, 0, 0, 0, -0.4, 0, 0, 0 ),
+"times": PoolRealArray( 0.2, 0.6 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/DemolishMenu:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 30, 0, 0, 0, 0, 0, -0.4, 0, 0, 0 ),
+"times": PoolRealArray( 0.4, 0.8 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/DemolishMenu:rect_scale:x")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 1e-05, 0, 0, 0, 0, 1, -0.4, 0, 0, 0 ),
+"times": PoolRealArray( 0.5, 0.9 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/DemolishMenu:rect_scale:y")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( 0, 0, 0, 0, 0, 1, -0.4, 0, 0, 0 ),
+"times": PoolRealArray( 0.5, 0.9 )
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("GradientBlurRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("GradientBlurRect:rect_scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1.3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("GradientBlurRect:rect_scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("PanelContainer:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("VBoxContainer/ModeLabelContainer:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 30, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("VBoxContainer/ModeLabelContainer:rect_scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("VBoxContainer/ModeLabelContainer:rect_scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/BuildHereMenu:rect_scale:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/BuildHereMenu:rect_scale:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/BuildHereMenu:rect_rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 30, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("GradientBlurRect:rect_rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("GradientBlurRect:anchor_left")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -0.1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("GradientBlurRect:rect_pivot_offset:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("GradientBlurRect:rect_pivot_offset:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 650, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("VBoxContainer/ModeLabelContainer/HBoxContainer/DoneButton:rect_scale:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("VBoxContainer/ModeLabelContainer/HBoxContainer/DoneButton:rect_scale:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("VBoxContainer/ModeLabelContainer/HBoxContainer/DoneButton:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 15, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/DemolishMenu:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 30, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/DemolishMenu:rect_scale:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("VBoxContainer/MarginContainer2/HBoxContainer/DemolishMenu:rect_scale:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="StyleBoxFlat" id=25]
+content_margin_left = 90.0
+content_margin_right = 90.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.509804, 0.560784, 0.6, 0.490196 )
+border_color = Color( 1, 1, 1, 0.196078 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="DynamicFontData" id=26]
+font_path = "res://Assets/Fonts/Nunito/Nunito-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=15]
+size = 32
+extra_spacing_char = 3
+font_data = SubResource( 26 )
+
+[sub_resource type="DynamicFontData" id=27]
+font_path = "res://Assets/Fonts/Nunito/Nunito-Black.ttf"
+
+[sub_resource type="DynamicFont" id=22]
+size = 28
+extra_spacing_top = 2
+extra_spacing_char = 2
+font_data = SubResource( 27 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+content_margin_left = 90.0
+content_margin_right = 90.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.509804, 0.560784, 0.6, 0.490196 )
+border_color = Color( 1, 1, 1, 0.196078 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxFlat" id=24]
+content_margin_left = 90.0
+content_margin_right = 90.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.584314, 0.631373, 0.666667, 0.196078 )
+border_color = Color( 1, 1, 1, 0.196078 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.807843, 0.168627, 0.27451, 0.686275 )
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[node name="BuildMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 500 )
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Open = SubResource( 17 )
+anims/RESET = SubResource( 18 )
+
+[node name="GradientBlurRect" parent="." instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = -0.1
+rect_rotation = 5.0
+rect_scale = Vector2( 1.3, 1e-05 )
+rect_pivot_offset = Vector2( 0, 650 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 1422.0
+margin_right = 828.0
+margin_bottom = 1602.0
+rect_min_size = Vector2( 1, 1 )
+rect_pivot_offset = Vector2( 0, 110 )
+mouse_filter = 2
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+margin_left = 50.0
+margin_right = 778.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 2
+custom_constants/separation = 25
+script = ExtResource( 2 )
+
+[node name="BuildHereMenu" parent="VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 170.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 170, 120 )
+rect_rotation = 30.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( -100, 200 )
+mouse_filter = 0
+yield_before_animation = true
+
+[node name="DemolishMenu" parent="VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 165.0
+margin_right = 285.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+rect_rotation = 30.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( -100, 200 )
+yield_before_animation = true
+
+[node name="EditingMenu" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+visible = false
+margin_left = 50.0
+margin_right = 778.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+custom_constants/separation = 25
+script = ExtResource( 2 )
+
+[node name="BuildObjectsMenu" parent="VBoxContainer/MarginContainer2/EditingMenu" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 120.0
+yield_before_animation = true
+
+[node name="FinishedButton" type="Button" parent="VBoxContainer/MarginContainer2/EditingMenu"]
+margin_left = 145.0
+margin_right = 325.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 25 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 25 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/EditingMenu/FinishedButton"]
+modulate = Color( 0.231373, 0.258824, 0.282353, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 60, 60 )
+rect_scale = Vector2( 1, 1.01081 )
+rect_pivot_offset = Vector2( 40, 40 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ModeLabelContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 1606.0
+margin_right = 828.0
+margin_bottom = 1792.0
+rect_rotation = 30.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 0, 200 )
+mouse_filter = 2
+custom_constants/margin_right = 60
+custom_constants/margin_left = 210
+custom_constants/margin_bottom = 115
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ModeLabelContainer"]
+margin_left = 210.0
+margin_right = 768.0
+margin_bottom = 71.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ModeLabelContainer/HBoxContainer"]
+margin_right = 374.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.266667, 0.317647, 0.360784, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "BUILD MODE"
+valign = 1
+
+[node name="DoneButton" type="Button" parent="VBoxContainer/ModeLabelContainer/HBoxContainer"]
+margin_left = 378.0
+margin_right = 558.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 70, 70 )
+rect_rotation = 15.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( -100, 150 )
+custom_colors/font_color_disabled = Color( 0.337255, 0.380392, 0.415686, 0.490196 )
+custom_colors/font_color_focus = Color( 0.337255, 0.380392, 0.415686, 0.784314 )
+custom_colors/font_color = Color( 0.337255, 0.380392, 0.415686, 0.784314 )
+custom_colors/font_color_hover = Color( 0.337255, 0.380392, 0.415686, 0.784314 )
+custom_colors/font_color_pressed = Color( 0.337255, 0.380392, 0.415686, 0.784314 )
+custom_fonts/font = SubResource( 22 )
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 20 )
+script = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ModeLabelContainer/HBoxContainer/DoneButton"]
+modulate = Color( 0.258824, 0.298039, 0.329412, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 30, 30 )
+rect_scale = Vector2( 0.997288, 0.99999 )
+rect_pivot_offset = Vector2( 20, 20 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

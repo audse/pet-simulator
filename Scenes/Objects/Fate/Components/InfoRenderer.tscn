@@ -1,0 +1,477 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://addons/more_controls/nodes/modal.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/Fate/Components/info_renderer.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Interface/Panels/transparent_inset_panel.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/Fonts/Nunito/Nunito-Medium.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Fonts/Nunito/Nunito-SemiBold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/Shaders/gradient_fill.gdshader" type="Shader" id=6]
+[ext_resource path="res://Assets/Interface/Icons/png/stars_icon.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Interface/Patterns/star_pattern.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Fonts/Nunito/Nunito-Black.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Assets/Interface/Icons/png/x_icon.png" type="Texture" id=10]
+[ext_resource path="res://Nodes/Control/PopButton/pop_button.gd" type="Script" id=11]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.192157, 0.219608, 0.243137, 0 )
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color( 0.85098, 0.894118, 0.92549, 0.490196 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+shadow_color = Color( 0.192157, 0.219608, 0.243137, 0.490196 )
+shadow_offset = Vector2( 0, 15 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.192157, 0.219608, 0.243137, 1 )
+border_width_bottom = 650
+border_color = Color( 0.192157, 0.219608, 0.243137, 0.882353 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+shadow_color = Color( 0.192157, 0.219608, 0.243137, 0.490196 )
+shadow_offset = Vector2( 0, 15 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 120.0
+content_margin_bottom = 0.0
+bg_color = Color( 0.25098, 0.278431, 0.301961, 1 )
+border_color = Color( 0.584314, 0.631373, 0.666667, 0.686275 )
+corner_radius_top_left = 49
+corner_radius_top_right = 49
+corner_detail = 15
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+extra_spacing_char = 8
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 4
+border_color = Color( 0.85098, 0.905882, 0.945098, 0.490196 )
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_color = Color( 0.85098, 0.905882, 0.945098, 0.490196 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.506066, 1 )
+colors = PoolColorArray( 0.670588, 0.717647, 0.74902, 1, 0.417542, 0.462167, 0.49354, 1, 0.262745, 0.305882, 0.337255, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 6 )
+shader_param/gradient = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 72
+extra_spacing_top = 4
+extra_spacing_char = 4
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 28
+extra_spacing_space = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 36
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 60.0
+content_margin_right = 60.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.14902, 0.576471, 0.886275, 0.686275 )
+border_width_top = 1
+border_width_bottom = 6
+border_color = Color( 0.0941176, 0.415686, 0.870588, 0.686275 )
+border_blend = true
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 20
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[node name="InfoRenderer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+rect = Rect2( 0, 0, 0, 0 )
+
+[node name="Modal" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+target_node_path = NodePath("../ModalMargin")
+modal_node_path = NodePath("../ModalMargin/ModalPanel")
+overlay_color = Color( 0.301961, 0.341176, 0.372549, 0.686275 )
+overlay_blur_amount = 3.0
+
+[node name="ModalMargin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 60
+custom_constants/margin_top = 350
+custom_constants/margin_left = 60
+custom_constants/margin_bottom = 350
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ModalPanel" type="PanelContainer" parent="ModalMargin"]
+margin_left = 60.0
+margin_top = 378.0
+margin_right = 768.0
+margin_bottom = 1414.0
+rect_min_size = Vector2( 0, 680 )
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 4 )
+
+[node name="BackgroundPattern" type="MarginContainer" parent="ModalMargin/ModalPanel"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 706.0
+margin_bottom = 1033.0
+custom_constants/margin_right = 15
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="ModalMargin/ModalPanel/BackgroundPattern"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 689.0
+margin_bottom = 1014.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="BackgroundColor" type="Panel" parent="ModalMargin/ModalPanel"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 706.0
+margin_bottom = 1033.0
+rect_min_size = Vector2( 0, 600 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Content" type="VBoxContainer" parent="ModalMargin/ModalPanel"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 706.0
+margin_bottom = 1033.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="PanelContainer" parent="ModalMargin/ModalPanel/Content"]
+margin_right = 704.0
+margin_bottom = 169.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Actions" type="HBoxContainer" parent="ModalMargin/ModalPanel/Content/Header"]
+margin_top = 120.0
+margin_right = 704.0
+margin_bottom = 169.0
+
+[node name="FateButton" type="Button" parent="ModalMargin/ModalPanel/Content/Header/Actions"]
+margin_right = 176.0
+margin_bottom = 49.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.490196 )
+custom_colors/font_color_focus = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color_hover = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color_pressed = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+text = "FATE"
+align = 0
+
+[node name="ShopButton" type="Button" parent="ModalMargin/ModalPanel/Content/Header/Actions"]
+modulate = Color( 1, 1, 1, 0.490196 )
+margin_left = 180.0
+margin_right = 704.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.490196 )
+custom_colors/font_color_focus = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color_hover = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color_pressed = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/normal = SubResource( 12 )
+text = "SHOP"
+align = 0
+
+[node name="BodyContainer" type="MarginContainer" parent="ModalMargin/ModalPanel/Content"]
+margin_top = 173.0
+margin_right = 704.0
+margin_bottom = 1029.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 40
+custom_constants/margin_top = 70
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 90
+
+[node name="Body" type="VBoxContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer"]
+margin_left = 40.0
+margin_top = 70.0
+margin_right = 664.0
+margin_bottom = 766.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="FateNumberContainer" type="HBoxContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body"]
+margin_right = 624.0
+margin_bottom = 103.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="FateIcon" type="TextureRect" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/FateNumberContainer"]
+material = SubResource( 7 )
+margin_left = 182.0
+margin_right = 262.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="FateValueLabel" type="Label" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/FateNumberContainer"]
+margin_left = 282.0
+margin_right = 442.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 160, 0 )
+custom_colors/font_color = Color( 0.921569, 0.964706, 1, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "245"
+
+[node name="MarginContainer" type="MarginContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body"]
+margin_top = 123.0
+margin_right = 624.0
+margin_bottom = 306.0
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 60
+
+[node name="FateHelpText" type="Label" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/MarginContainer"]
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 50.0
+margin_right = 574.0
+margin_bottom = 123.0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.690196, 0.745098, 0.788235, 0.686275 )
+custom_fonts/font = SubResource( 14 )
+text = "Your fate is determined by your actions.
+Do good things, and fate will 
+smile upon you..."
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BonusesLabel2" type="Label" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body"]
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_top = 326.0
+margin_right = 624.0
+margin_bottom = 376.0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.690196, 0.745098, 0.788235, 1 )
+custom_fonts/font = SubResource( 9 )
+text = " Bonuses"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BonusesContainer" type="GridContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body"]
+margin_top = 396.0
+margin_right = 624.0
+margin_bottom = 696.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 25
+columns = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer"]
+self_modulate = Color( 0.301961, 0.341176, 0.372549, 1 )
+margin_right = 191.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 100, 140 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer/PanelContainer"]
+margin_left = 20.0
+margin_top = 90.0
+margin_right = 171.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_vertical = 8
+custom_styles/panel = SubResource( 10 )
+
+[node name="PanelContainer2" type="PanelContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer"]
+self_modulate = Color( 0.301961, 0.341176, 0.372549, 1 )
+margin_left = 216.0
+margin_right = 407.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer/PanelContainer2"]
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 171.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 60 )
+size_flags_vertical = 8
+custom_styles/panel = SubResource( 10 )
+
+[node name="PanelContainer3" type="PanelContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer"]
+self_modulate = Color( 0.301961, 0.341176, 0.372549, 1 )
+margin_left = 432.0
+margin_right = 623.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer4" type="PanelContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer"]
+self_modulate = Color( 0.301961, 0.341176, 0.372549, 1 )
+margin_top = 160.0
+margin_right = 191.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 100, 140 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer5" type="PanelContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer"]
+self_modulate = Color( 0.301961, 0.341176, 0.372549, 1 )
+margin_left = 216.0
+margin_top = 160.0
+margin_right = 407.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer6" type="PanelContainer" parent="ModalMargin/ModalPanel/Content/BodyContainer/Body/BonusesContainer"]
+self_modulate = Color( 0.301961, 0.341176, 0.372549, 1 )
+margin_left = 432.0
+margin_top = 160.0
+margin_right = 623.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="Button" parent="ModalMargin/ModalPanel"]
+margin_left = 586.0
+margin_top = 4.0
+margin_right = 706.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 120, 120 )
+size_flags_horizontal = 8
+size_flags_vertical = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.490196 )
+custom_colors/font_color_focus = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color_hover = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_colors/font_color_pressed = Color( 0.85098, 0.905882, 0.945098, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+align = 0
+script = ExtResource( 11 )
+
+[node name="TextureRect" type="TextureRect" parent="ModalMargin/ModalPanel/CloseButton"]
+modulate = Color( 0.584314, 0.631373, 0.666667, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

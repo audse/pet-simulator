@@ -1,3 +1,4 @@
+class_name DogSprite
 extends AnimatedSprite
 
 signal animation_started

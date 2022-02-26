@@ -1,14 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Objects/Pet/Components/Info/info_renderer.gd" type="Script" id=1]
-[ext_resource path="res://Nodes/Control/Containers/animated_tab_container.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Fonts/ttf/Nunito/Nunito-Black.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/more_controls/nodes/modal.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/Nunito/Nunito-Black.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/Objects/Pet/Components/Info/Needs/NeedsRenderer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/Pet/Components/Info/Personality/PersonalityRenderer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Fonts/ttf/Nunito/Nunito-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Fonts/Nunito/Nunito-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Assets/Shaders/Blur/rounded_blur.gdshader" type="Shader" id=7]
 [ext_resource path="res://Nodes/Control/BlurRect/BlurRoundedRect.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Patterns/plus.svg" type="Texture" id=9]
+[ext_resource path="res://Assets/Interface/Patterns/plus.svg" type="Texture" id=9]
+[ext_resource path="res://addons/more_nodes/nodes/queue.gd" type="Script" id=10]
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 7 )
@@ -17,14 +18,14 @@ shader_param/size = Vector2( 1, 1 )
 shader_param/blur_amount = 2.0
 
 [sub_resource type="DynamicFont" id=1]
-size = 28
+size = 24
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 50.0
-content_margin_right = 50.0
+content_margin_left = 40.0
+content_margin_right = 40.0
 content_margin_top = 25.0
 content_margin_bottom = 15.0
 bg_color = Color( 0.85098, 0.866667, 0.87451, 1 )
@@ -42,8 +43,8 @@ shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
 shadow_offset = Vector2( 0, 3 )
 
 [sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 50.0
-content_margin_right = 50.0
+content_margin_left = 40.0
+content_margin_right = 40.0
 content_margin_top = 25.0
 content_margin_bottom = 15.0
 bg_color = Color( 0.717647, 0.756863, 0.784314, 1 )
@@ -90,28 +91,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Modal" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Queue" type="Node" parent="."]
+script = ExtResource( 10 )
+
 [node name="Tween" type="Tween" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 100
+custom_constants/margin_right = 60
 custom_constants/margin_top = 250
-custom_constants/margin_left = 100
-custom_constants/margin_bottom = 150
+custom_constants/margin_left = 60
+custom_constants/margin_bottom = 200
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="MarginContainer"]
 copy_mode = 2
-rect = Rect2( 0, 0, 960, 1440 )
+rect = Rect2( 0, 0, 0, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-margin_left = 100.0
+margin_left = 60.0
 margin_top = 250.0
-margin_right = 860.0
-margin_bottom = 1290.0
+margin_right = 768.0
+margin_bottom = 1592.0
 custom_constants/margin_top = 78
 
 [node name="BlurRoundedRect" parent="MarginContainer/MarginContainer" instance=ExtResource( 8 )]
@@ -119,13 +131,13 @@ material = SubResource( 6 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 78.0
-margin_right = 760.0
-margin_bottom = 1040.0
+margin_right = 708.0
+margin_bottom = 1342.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer"]
 margin_top = 78.0
-margin_right = 760.0
-margin_bottom = 1040.0
+margin_right = 708.0
+margin_bottom = 1342.0
 custom_constants/margin_right = 15
 custom_constants/margin_top = 15
 custom_constants/margin_left = 15
@@ -135,8 +147,8 @@ custom_constants/margin_bottom = 15
 modulate = Color( 0.0862745, 0.113725, 0.137255, 1 )
 margin_left = 15.0
 margin_top = 15.0
-margin_right = 745.0
-margin_bottom = 947.0
+margin_right = 693.0
+margin_bottom = 1249.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 9 )
@@ -144,10 +156,10 @@ expand = true
 stretch_mode = 2
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
-margin_left = 100.0
+margin_left = 60.0
 margin_top = 250.0
-margin_right = 860.0
-margin_bottom = 1290.0
+margin_right = 768.0
+margin_bottom = 1592.0
 rect_clip_content = true
 custom_colors/font_color_disabled = Color( 0.733333, 0.792157, 0.835294, 1 )
 custom_colors/font_color_bg = Color( 0.411765, 0.478431, 0.529412, 1 )
@@ -159,27 +171,20 @@ custom_styles/tab_disabled = SubResource( 3 )
 custom_styles/tab_bg = SubResource( 3 )
 custom_styles/panel = SubResource( 4 )
 tab_align = 0
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Timer" type="Timer" parent="MarginContainer/TabContainer"]
-wait_time = 0.5
-one_shot = true
-
-[node name="Tween" type="Tween" parent="MarginContainer/TabContainer"]
 
 [node name="Wellbeing" type="VBoxContainer" parent="MarginContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
-margin_top = 109.0
+margin_top = 104.0
 margin_right = -30.0
 margin_bottom = -30.0
 
 [node name="NeedsLabelContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Wellbeing"]
-margin_right = 700.0
+margin_right = 648.0
 margin_bottom = 70.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
@@ -188,7 +193,7 @@ custom_constants/margin_left = 20
 [node name="NeedsLabel" type="Label" parent="MarginContainer/TabContainer/Wellbeing/NeedsLabelContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 680.0
+margin_right = 628.0
 margin_bottom = 70.0
 custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
 custom_fonts/font = SubResource( 5 )
@@ -198,13 +203,13 @@ text = "Needs"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 74.0
-margin_right = 700.0
+margin_right = 648.0
 margin_bottom = 544.0
 size_flags_vertical = 0
 
 [node name="WantsLabelContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Wellbeing"]
 margin_top = 548.0
-margin_right = 700.0
+margin_right = 648.0
 margin_bottom = 638.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 40
@@ -216,7 +221,7 @@ __meta__ = {
 [node name="WantsLabel" type="Label" parent="MarginContainer/TabContainer/Wellbeing/WantsLabelContainer"]
 margin_left = 20.0
 margin_top = 40.0
-margin_right = 680.0
+margin_right = 628.0
 margin_bottom = 90.0
 custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
 custom_fonts/font = SubResource( 5 )
@@ -224,7 +229,7 @@ text = "Wants"
 
 [node name="FeelingsLabelContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Wellbeing"]
 margin_top = 642.0
-margin_right = 700.0
+margin_right = 648.0
 margin_bottom = 732.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 40
@@ -236,7 +241,7 @@ __meta__ = {
 [node name="FeelingsLabel" type="Label" parent="MarginContainer/TabContainer/Wellbeing/FeelingsLabelContainer"]
 margin_left = 20.0
 margin_top = 40.0
-margin_right = 680.0
+margin_right = 628.0
 margin_bottom = 90.0
 custom_colors/font_color = Color( 0.301961, 0.341176, 0.372549, 1 )
 custom_fonts/font = SubResource( 5 )
@@ -247,7 +252,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
-margin_top = 109.0
+margin_top = 104.0
 margin_right = -30.0
 margin_bottom = -30.0
 
@@ -256,7 +261,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
-margin_top = 109.0
+margin_top = 104.0
 margin_right = -30.0
 margin_bottom = -30.0
 

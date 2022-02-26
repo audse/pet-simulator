@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/more_nodes/nodes/save.gd" type="Script" id=1]
+[ext_resource path="res://addons/more_nodes/nodes/share_resource.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/Fate/Components/LabelRenderer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Fate/fate.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Objects/Fate/Components/InfoRenderer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Fate/Components/render_controller.gd" type="Script" id=6]
+
+[node name="Fate" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="ShareResource" type="Node" parent="."]
+script = ExtResource( 2 )
+nodes = [ NodePath(".."), NodePath("../RenderController"), NodePath("../RenderController/LabelRenderer"), NodePath("../RenderController/InfoRenderer") ]
+property_names = [ "data" ]
+
+[node name="Save" type="Node" parent="."]
+script = ExtResource( 1 )
+file_name = "fate"
+
+[node name="RenderController" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelRenderer" parent="RenderController" instance=ExtResource( 3 )]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="InfoRenderer" parent="RenderController" instance=ExtResource( 5 )]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

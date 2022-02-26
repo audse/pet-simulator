@@ -10,7 +10,7 @@ func _init() -> void:
 func get_icon_texture_array(type_id:String, category_id:String) -> Array:
 	var designs:Array = []
 	
-	var type:Dictionary = get_type(type_id)
+	var type:Dictionary = get_type(data, type_id)
 	var category:Dictionary = get_category(type, category_id)
 	
 	if not "path" in type or not "path" in category: return designs
@@ -75,7 +75,7 @@ func find_texture(
 		return texture
 
 
-func create_file_name(tile:Dictionary, option:String, view_state:int) -> String:
+static func create_file_name(tile:Dictionary, option:String, view_state:int) -> String:
 	var file_name:String = tile["path"]
 	
 	if not option in tile["options"]: return file_name
@@ -92,7 +92,7 @@ func create_file_name(tile:Dictionary, option:String, view_state:int) -> String:
 	return file_name
 
 
-func create_icon_file_name(tile:Dictionary, option:String) -> String:
+static func create_icon_file_name(tile:Dictionary, option:String) -> String:
 	var tile_path:String = tile["path"]
 	if "/" in tile_path:
 		tile_path = tile_path.split("/")[1]
@@ -106,17 +106,17 @@ func create_icon_file_name(tile:Dictionary, option:String) -> String:
 	return file_name
 
 
-func get_type(type_id:String) -> Dictionary:
-	if not "designs" in data: return {}
+static func get_type(data_value:Dictionary, type_id:String) -> Dictionary:
+	if not "designs" in data_value: return {}
 	
-	for type in data["designs"]["types"]:
+	for type in data_value["designs"]["types"]:
 		if type["id"] == type_id:
 			return type
 	
 	return {}
 
 
-func get_category(type:Dictionary, category_id:String) -> Dictionary:
+static func get_category(type:Dictionary, category_id:String) -> Dictionary:
 	if not "categories" in type: return {}
 	
 	for category in type["categories"]:
@@ -126,7 +126,7 @@ func get_category(type:Dictionary, category_id:String) -> Dictionary:
 	return {}
 
 
-func get_tile(category:Dictionary, tile_id:String) -> Dictionary:
+static func get_tile(category:Dictionary, tile_id:String) -> Dictionary:
 	if not "tiles" in category: return {}
 	
 	for tile in category["tiles"]:

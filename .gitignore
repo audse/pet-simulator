@@ -1,7 +1,7 @@
 *.aseprite
 *.import
 .import
-*.png
+Assets/**/*.png
 *.png.import
 *.ttf
 *.svg
@@ -9,4 +9,9 @@ Assets/Shaders/CRTShader.shader
 .DS_Store
 Assets/Fonts
 Todo.gd
-addons
+addons/EasyBlend
+addons/autotiler
+icon.png
+export_presets.cfg
+default_env.tres
+*.ai

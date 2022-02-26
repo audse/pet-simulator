@@ -5,7 +5,7 @@ signal wander_completed
 var _connect
 
 func _ready():
-	$Sprite.play_next("default")
+	($Sprite as DogSprite).play_next("default")
 
 func _input(event):
 	if event is InputEventScreenTouch and event.is_pressed() and not event.is_echo():
@@ -23,11 +23,11 @@ func trot(target_position:Vector2) -> void:
 		else Globals.Direction.RIGHT
 	)
 	
-	yield($Sprite.set_direction(target_direction), "completed")
+	yield(($Sprite as DogSprite).set_direction(target_direction), "completed")
 	
 	# Play the sprite animation and move to position
-	$Sprite.play_next("trot")
-	yield($Sprite, "animation_started")
+	($Sprite as DogSprite).play_next("trot")
+	yield(($Sprite as DogSprite), "animation_started")
 	yield(Tweens.move(self, target_position, time), "completed")
 
 func get_trot_time(target_position:Vector2) -> float:
@@ -56,8 +56,8 @@ func wander() -> void:
 		else "default"
 	)
 	
-	$Sprite.play_next(pause_action)
-	yield($Sprite, "animation_started")
+	($Sprite as DogSprite).play_next(pause_action)
+	yield(($Sprite as DogSprite), "animation_started")
 	
 	yield(Timers.wait(pause_time), "completed")
 	emit_signal("wander_completed")

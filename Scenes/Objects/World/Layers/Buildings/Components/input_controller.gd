@@ -1,3 +1,4 @@
+class_name BuildingsLayerInputController
 extends Node2D
 
 signal build_here(coord)

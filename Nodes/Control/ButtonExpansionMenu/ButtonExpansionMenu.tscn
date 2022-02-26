@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Nodes/Control/PopButton/pop_button.gd" type="Script" id=3]
 [ext_resource path="res://Nodes/Control/ButtonExpansionMenu/button_expansion_menu.gd" type="Script" id=4]
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/x_icon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Interface/Icons/png/x_icon.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Open"

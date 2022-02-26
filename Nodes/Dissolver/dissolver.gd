@@ -24,16 +24,15 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var viewport_position = get_viewport_transform().affine_inverse().origin
-	var viewport_size:Vector2 = parent_viewport.get_visible_rect().size
+	var viewport_rect := ViewportRef.get_viewport_rect(self, parent_viewport)
 	
 	# Set dissolve size to parent viewport size
-	rect_global_position = viewport_position
-	rect_size = viewport_size
+	rect_global_position = viewport_rect.position
+	rect_size = viewport_rect.size
 	
 	# Set noise size to parent viewport size
-	dissolve_texture.width = viewport_size.x
-	dissolve_texture.height = viewport_size.y
+	dissolve_texture.width = viewport_rect.size.x
+	dissolve_texture.height = viewport_rect.size.y
 
 
 func dissolve_in(time:float=1.5, delay:float=0) -> void:

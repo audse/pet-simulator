@@ -1,0 +1,140 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Fonts/Nunito/Nunito-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Nodes/Control/Containers/animated_tab_container.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/Pet/Components/Info/Needs/NeedsRenderer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Pet/Components/Info/Personality/PersonalityRenderer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Pet/Components/Info/info_renderer.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 60.0
+content_margin_right = 60.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.584314, 0.631373, 0.666667, 1 )
+border_color = Color( 1, 1, 1, 0.196078 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+expand_margin_left = 30.0
+expand_margin_right = 30.0
+expand_margin_top = 5.0
+expand_margin_bottom = 60.0
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 60.0
+content_margin_right = 60.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.517647, 0.572549, 0.615686, 1 )
+border_color = Color( 1, 1, 1, 0.196078 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+expand_margin_left = 30.0
+expand_margin_right = 30.0
+expand_margin_bottom = 60.0
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 30.0
+content_margin_right = 30.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 0.584314, 0.631373, 0.666667, 1 )
+border_color = Color( 1, 1, 1, 0.196078 )
+corner_radius_top_left = 30
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+shadow_color = Color( 0.164706, 0.164706, 0.180392, 0.0784314 )
+shadow_size = 20
+shadow_offset = Vector2( 0, 3 )
+
+[node name="PetInterfaceRenderer" type="Control"]
+anchor_top = 0.025
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0.733333, 0.792157, 0.835294, 1 )
+custom_colors/font_color_bg = Color( 0.733333, 0.792157, 0.835294, 1 )
+custom_colors/font_color_fg = Color( 0.901961, 0.952941, 0.992157, 1 )
+custom_constants/side_margin = 30
+custom_fonts/font = SubResource( 1 )
+custom_styles/tab_fg = SubResource( 2 )
+custom_styles/tab_disabled = SubResource( 3 )
+custom_styles/tab_bg = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
+tab_align = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="TabContainer"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Tween" type="Tween" parent="TabContainer"]
+
+[node name="Needs" type="MarginContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 94.0
+margin_right = -30.0
+margin_bottom = -30.0
+
+[node name="NeedsRenderer" parent="TabContainer/Needs" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 900.0
+margin_bottom = 470.0
+size_flags_vertical = 0
+
+[node name="Wants" type="MarginContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 94.0
+margin_right = -30.0
+margin_bottom = -30.0
+
+[node name="Personality" type="MarginContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 94.0
+margin_right = -30.0
+margin_bottom = -30.0
+
+[node name="PersonalityRenderer" parent="TabContainer/Personality" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 900.0
+margin_bottom = 40.0
+size_flags_vertical = 0

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/more_nodes/nodes/layered_texture_generator.gd" type="Script" id=1]
+
+[node name="LayeredTextureGenerator" type="Viewport"]
+size = Vector2( 24, 24 )
+transparent_bg = true
+usage = 0
+script = ExtResource( 1 )

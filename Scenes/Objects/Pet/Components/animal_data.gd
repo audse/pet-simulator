@@ -1,0 +1,2 @@
+class_name AnimalData
+extends Resource

@@ -95,15 +95,3 @@ func set_base_map(new_base_map:AnimatedAutotile) -> void:
 
 func get_base_map() -> AnimatedAutotile:
 	return base_map
-
-
-func parse_animated_cell_array(cell_set:Array, action:int) -> Array:
-	var cell_array:Array = []
-	match action:
-		Action.SET_CELLS:
-			for cell in cell_set:
-				cell_array.append(cell.to)
-		Action.ERASE_CELLS:
-			for cell in cell_set:
-				cell_array.append(cell.from)
-	return cell_array

@@ -1,7 +1,10 @@
+class_name BuildingsLayerRenderer
 extends Node2D
 
+var BuildingScene := preload("res://Scenes/Objects/Building/Building.tscn")
 
 func place_building(coord:Vector2) -> void:
+	print("\nBuilding placed at coord ", coord, "!")
 	var cells:Array = []
 	# create 3x3 building originating at start point
 	for y in [coord.y - 1, coord.y, coord.y + 1]:
@@ -9,22 +12,16 @@ func place_building(coord:Vector2) -> void:
 			cells.append(Vector2(x, y))
 	
 	# draw new building
-	var new_building:Building = Building.new(
-		BuildingData.new(
-			str(Globals.random.randi_range(10000, 99999)),
-			cells,
-			[],
-			[],
-			DesignResourceManager.new().empty_design
-		)
-	)
-	
+	var new_building:Building = BuildingScene.instance()
 	add_child(new_building)
+	
+	# warning-ignore:unsafe_property_access
+	new_building.share_resource.resource = BuildingData.new("new_building", cells)
+	
 	adjust_building_z_indeces()
 	
 	# set to be currently editing
 	States.Build.target_node = new_building
-	new_building.input.target_node = new_building
 
 
 func adjust_building_z_indeces() -> void:	
@@ -36,9 +33,9 @@ func adjust_building_z_indeces() -> void:
 		index -= 1
 
 
-static func sort_by_tilemap_y(a:Node, b:Node) -> bool:
-	var a_map = a.tile_manager.base_map
-	var b_map = b.tile_manager.base_map
+static func sort_by_tilemap_y(a:Building, b:Building) -> bool:
+	var a_map:AnimatedAutotile = (a.data as BuildingData).tile_manager.base_map
+	var b_map:AnimatedAutotile = (b.data as BuildingData).tile_manager.base_map
 	if a_map and b_map:
 		var a_lowest = a_map.get_furthest_cell_value(Globals.Direction.DOWN)
 		var b_lowest = b_map.get_furthest_cell_value(Globals.Direction.DOWN)
@@ -56,16 +53,19 @@ func draw_save_data(save_data:Dictionary) -> void:
 	if save_data.has("buildings"):
 		# Draw each building
 		for building in save_data["buildings"]:
+			# warning-ignore:unsafe_cast
 			if (building as Dictionary).has_all(["id", "cells", "doors", "windows", "design"]):
-				var new_building:Building = Building.new(BuildingData.new(
+				var new_building:Building = BuildingScene.instance()
+				add_child(new_building, true)
+				
+				# warning-ignore:unsafe_property_access
+				new_building.share_resource.resource = BuildingData.new(
 					building["id"],
 					building["cells"],
 					building["doors"],
 					building["windows"],
 					building["design"]
-				))
-				add_child(new_building, true)
-				new_building.draw_save_data(new_building)
+				)
 			
 		# Adjust z ordering
 		adjust_building_z_indeces()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/Icons/png/chevron_icon.png" type="Texture" id=1]
-[ext_resource path="res://Nodes/Control/Containers/column_container.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Interface/Icons/png/chevron_icon.png" type="Texture" id=1]
+[ext_resource path="res://addons/more_controls/nodes/containers/column_container.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Resources/grey_radial_gradient.tres" type="Texture" id=3]
 [ext_resource path="res://Nodes/Control/Containers/ScrollColumnContainer/scroll_column_container.gd" type="Script" id=4]
 [ext_resource path="res://Nodes/Drag/Drag.tscn" type="PackedScene" id=5]

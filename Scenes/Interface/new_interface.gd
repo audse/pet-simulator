@@ -3,7 +3,6 @@ extends Control
 onready var nodes:Dictionary = {
 	main_menu = $MainMenu,
 	build_menu = $BuildMenu,
-	design_menu = $DesignMenu
 }
 
 

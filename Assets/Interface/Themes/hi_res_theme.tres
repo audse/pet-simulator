@@ -1,11 +1,11 @@
 [gd_resource type="Theme" load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/white_button.tres" type="StyleBox" id=1]
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/white_button_pressed.tres" type="StyleBox" id=2]
-[ext_resource path="res://Assets/Interface/Themes/HiResTheme/white_button_disabled.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/Interface/Buttons/white_button.tres" type="StyleBox" id=1]
+[ext_resource path="res://Assets/Interface/Buttons/white_button_pressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://Assets/Interface/Buttons/white_button_disabled.tres" type="StyleBox" id=3]
 
 [sub_resource type="DynamicFontData" id=6]
-font_path = "res://Assets/Fonts/ttf/Nunito/Nunito-Bold.ttf"
+font_path = "res://Assets/Fonts/Nunito/Nunito-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=7]
 size = 32
@@ -14,7 +14,7 @@ font_data = SubResource( 6 )
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="DynamicFontData" id=4]
-font_path = "res://Assets/Fonts/ttf/Nunito/Nunito-Regular.ttf"
+font_path = "res://Assets/Fonts/Nunito/Nunito-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=5]
 size = 32

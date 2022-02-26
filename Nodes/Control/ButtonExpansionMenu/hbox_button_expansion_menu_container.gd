@@ -1,4 +1,5 @@
 tool
+class_name ButtonExpansionHBoxContainer
 extends HBoxContainer
 
 onready var children:Array = get_children()
@@ -31,15 +32,15 @@ func editor_sort() -> void:
 		else:
 			offset += child.rect_size.x + get_constant("separation")
 
+
 func start_sort(_is_open:bool, node:ButtonExpansionMenu) -> void:
-	
 	for child in children:
 		if child != node and child is ButtonExpansionMenu and child.is_open:
 			child.disconnect("toggle_started", self, "start_sort")
 			child.yield_before_animation = false
 			child.toggle()
 			child.yield_before_animation = true
-			yield(Timers.wait(0.25), "completed")
+			yield(Timers.wait(0.5), "completed")
 			child.connect("toggle_started", self, "start_sort", [child])
 	
 	sort()

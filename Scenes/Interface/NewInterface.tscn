@@ -2,14 +2,20 @@
 
 [ext_resource path="res://Assets/Interface/Themes/hi_res_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Interface/new_interface.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Interface/HiRes/MainMenu/MainMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Interface/HiRes/BuildMenu/BuildMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Interface/HiRes/DesignMenu/DesignMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Interface/MainMenu/MainMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Interface/BuildMenu/BuildMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Export/Screenshots/screenshot_01.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 0 )
+border_width_top = 260
+border_color = Color( 0.905882, 0.933333, 0.956863, 0.588235 )
+border_blend = true
 
 [node name="NewInterface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 356, -65 )
 mouse_filter = 2
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -28,6 +34,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -200.0
@@ -42,9 +49,18 @@ __meta__ = {
 
 [node name="BuildMenu" parent="." instance=ExtResource( 4 )]
 
-[node name="DesignMenu" parent="." instance=ExtResource( 5 )]
-
 [node name="MainMenu" parent="." instance=ExtResource( 3 )]
+
+[node name="Gradient" type="PanelContainer" parent="."]
+modulate = Color( 0.584314, 0.631373, 0.666667, 0.294118 )
+anchor_right = 1.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 270 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="toggled" from="BuildMenu" to="." method="_on_BuildMenu_toggled"]
 [connection signal="build_button_pressed" from="MainMenu" to="." method="_on_MainMenu_build_button_pressed"]

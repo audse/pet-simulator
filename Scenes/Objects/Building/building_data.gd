@@ -1,6 +1,11 @@
 class_name BuildingData
 extends Resource
 
+var _connect
+
+var input := BuildingInputData.new()
+var tile_manager := BuildingTileManager.new()
+
 var id:String = ""
 var cells:Array = []
 var doors:Array = []
@@ -42,30 +47,10 @@ func _init(
 	design = design_value
 
 
-func update_cells(changed_cells, action:int) -> void:
-	match action:
-		BuildingTileManager.Action.SET_CELLS:
-			for cell in changed_cells:
-				cells.append(cell.to)
-		BuildingTileManager.Action.ERASE_CELLS:
-			for cell in changed_cells:
-				cells.erase(cell.from)
-
-
-func update_cells_in_direction(direction:int, num_additions:int, base_map:AnimatedAutotile) -> void:
-	var changed_cells:Array = base_map.add_to_direction(direction, num_additions)
-	if num_additions > 0:
-		for cell in changed_cells:
-			cells.append(cell.to)
-	else:
-		for cell in changed_cells:
-			cells.erase(cell.from)
-
-
 func collect_save_data() -> Dictionary:
 	return {
 		"id": id,
-		"cells": cells,
+		"cells": tile_manager.base_map.get_used_cells(),
 		"doors": doors,
 		"windows": windows,
 		"design": design

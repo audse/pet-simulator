@@ -11,21 +11,12 @@ func _init(
 	tile_set_value:TileSet=tile_set, 
 	cell_size_value:Vector2=cell_size, 
 	tile_set_index_value:int=0,
-	mode_value:int=TileMap.MODE_SQUARE
+	mode_value:int=mode
 ) -> void:
 	tile_set = tile_set_value
 	cell_size = cell_size_value
 	tile_set_index = tile_set_index_value
 	mode = mode_value
-
-
-func duplicate_map() -> TileMap:
-	var new_map:TileMap = TileMap.new()
-	new_map.mode = mode
-	new_map.tile_set = tile_set
-	new_map.cell_size = cell_size
-	add_child(new_map)
-	return new_map
 
 
 func slide_set_cells(coords:Array, time:float=0.35) -> void:
@@ -116,80 +107,82 @@ func slide_add_to_direction(direction:int=Globals.Direction.LEFT, num_additions:
 	emit_signal("slide_finished")
 
 
+func duplicate_map() -> TileMap:
+	var new_map:TileMap = TileMap.new()
+	new_map.mode = mode
+	new_map.tile_set = tile_set
+	new_map.cell_size = cell_size
+	add_child(new_map)
+	return new_map
+
 #
 # HELPER METHODS
 #
 
-func round_to_one(delta:Vector2) -> Vector2:
-	if delta.x < -1:
-		delta.x = -1
-	elif delta.x > 1:
-		delta.x = 1
-	if delta.y < -1:
-		delta.y = -1
-	elif delta.y > 1:
-		delta.y = 1
-	return delta
-
 
 func get_midpoint_cell() -> Vector2:
-	var used:Rect2 = get_used_rect()
-	var midpoint:Vector2 = Vector2(
-		used.position.x + (used.size.x / 2),
-		used.position.y + (used.size.y / 2)
-	)
-	return midpoint
+	return TileMapRef.get_midpoint_cell(self)
+#	var used:Rect2 = get_used_rect()
+#	var midpoint:Vector2 = Vector2(
+#		used.position.x + (used.size.x / 2),
+#		used.position.y + (used.size.y / 2)
+#	)
+#	return midpoint
 
 
 func get_midpoint_position() -> Vector2:
-	var midpoint:Vector2 = get_midpoint_cell()
-#	return (midpoint * cell_size) - (cell_size / 2)
-	return map_to_world(midpoint)
+	return TileMapRef.get_midpoint_position(self)
+#	var midpoint:Vector2 = get_midpoint_cell()
+#	return map_to_world(midpoint)
 
 
 func get_furthest_cell_value(direction:int=Globals.Direction.LEFT) -> int:
-	var used:Rect2 = get_used_rect()
-	
-	match direction:
-		Globals.Direction.LEFT:
-			return int(used.position.x)
-		Globals.Direction.RIGHT:
-			return int(used.end.x - 1)
-		Globals.Direction.UP:
-			return int(used.position.y)
-		Globals.Direction.DOWN:
-			return int(used.end.y - 1)
-		_:
-			return 0
+	return TileMapRef.get_furthest_cell_value(self, direction)
+#	var used:Rect2 = get_used_rect()
+#
+#	match direction:
+#		Globals.Direction.LEFT:
+#			return int(used.position.x)
+#		Globals.Direction.RIGHT:
+#			return int(used.end.x - 1)
+#		Globals.Direction.UP:
+#			return int(used.position.y)
+#		Globals.Direction.DOWN:
+#			return int(used.end.y - 1)
+#		_:
+#			return 0
 
 
 func get_furthest_position(direction:int=Globals.Direction.LEFT) -> Vector2:
-	var furthest_cell:int = get_furthest_cell_value(direction)
-	var midpoint:Vector2 = get_midpoint_cell()
-	
-	match direction:
-		Globals.Direction.LEFT, Globals.Direction.RIGHT:
-			return map_to_world(Vector2(furthest_cell, 0))
-		Globals.Direction.UP, Globals.Direction.DOWN:
-			return map_to_world(Vector2(0, furthest_cell))
-		_:
-			return Vector2.ZERO
+	return TileMapRef.get_furthest_position(self, direction)
+#	var furthest_cell:int = get_furthest_cell_value(direction)
+#	var _midpoint:Vector2 = get_midpoint_cell()
+#
+#	match direction:
+#		Globals.Direction.LEFT, Globals.Direction.RIGHT:
+#			return map_to_world(Vector2(furthest_cell, 0))
+#		Globals.Direction.UP, Globals.Direction.DOWN:
+#			return map_to_world(Vector2(0, furthest_cell))
+#		_:
+#			return Vector2.ZERO
 
 
 func get_bounding_box() -> Dictionary:
-	return {
-		left = get_furthest_position(Globals.Direction.LEFT),
-		right = get_furthest_position(Globals.Direction.RIGHT),
-		up = get_furthest_position(Globals.Direction.UP),
-		down = get_furthest_position(Globals.Direction.DOWN),
-	}
+	return TileMapRef.get_bounding_box(self)
+#	return {
+#		left = get_furthest_position(Globals.Direction.LEFT),
+#		right = get_furthest_position(Globals.Direction.RIGHT),
+#		up = get_furthest_position(Globals.Direction.UP),
+#		down = get_furthest_position(Globals.Direction.DOWN),
+#	}
+
 
 
 func get_cells_between_coords(from_coord:Vector2, to_coord:Vector2) -> Array:
 	var cells:Array = []
 	
 	var delta:Vector2 = to_coord - from_coord
-	var factor:Vector2 = round_to_one(delta)
+	var factor:Vector2 = Vector2Ref.normalize_to_one(delta)
 	
 	var x_range:Array = range(abs(delta.x)) if delta.x != 0 else [0]
 	var y_range:Array = range(abs(delta.y)) if delta.y != 0 else [0]
@@ -219,38 +212,6 @@ func get_furthest_cells(direction:int=Globals.Direction.LEFT) -> Array:
 	
 	return cells
 
-	
-""" get_delta_from_direction
-
-`delta` is `amount` converted into coordinates
-representing the change of a particular direction
-
-# Example 1:
-	(direction=left, amount=1)
-	returns (-1, 0)
-	
-	the farthest left column would have x coord of 0
-	so delta -1 means a column to the left of the leftmost column
-	
-# Example 2:
-	(direction=left, amount=-1)
-	returns (1, 0)
-	the farthest left column has x of 0
-	so x of 1 would be inside the map and need to be deleted
-	
-"""
-func get_delta_from_direction(direction:int, amount:int=1) -> Vector2:
-	var delta:Vector2 = Vector2(0, 0)
-	match direction:
-		Globals.Direction.LEFT:
-			delta.x = -amount
-		Globals.Direction.RIGHT:
-			delta.x = amount
-		Globals.Direction.UP:
-			delta.y = -amount
-		Globals.Direction.DOWN:
-			delta.y = amount
-	return delta
 
 """ add_to_direction
 
@@ -269,7 +230,7 @@ func add_to_direction(direction:int=Globals.Direction.LEFT, num_additions:int=1)
 	var furthest_cells:Array = get_furthest_cells(direction)
 	var cells_to_set:Array = []
 	var is_erasing:bool = num_additions < 0
-	var total_delta:Vector2 = get_delta_from_direction(direction, num_additions)
+	var total_delta:Vector2 = TileMapRef.get_delta_from_direction(direction, num_additions)
 	
 	for index in range(abs(num_additions)):
 		
@@ -279,30 +240,16 @@ func add_to_direction(direction:int=Globals.Direction.LEFT, num_additions:int=1)
 				cells_to_set.append({
 					from = cell,
 					# warning-ignore:narrowing_conversion
-					to = cell + get_delta_from_direction(direction, abs(index) + 1)
+					to = cell + TileMapRef.get_delta_from_direction(direction, abs(index) + 1)
 				})
 			else:
 				cells_to_set.append({
 					# warning-ignore:narrowing_conversion
-					from = cell - get_delta_from_direction(direction, abs(index)),
+					from = cell - TileMapRef.get_delta_from_direction(direction, abs(index)),
 					to = cell + total_delta
 				})
 				
 	return cells_to_set
-
-#
-# CUSTOM SORT METHODS
-#
-
-func sort_cells_by_x(cell_a:Vector2, cell_b:Vector2) -> bool:
-	return cell_a.x > cell_b.x
-
-
-func sort_cells_by_y(cell_a:Vector2, cell_b:Vector2) -> bool:
-	return cell_a.y > cell_b.y
-
-
-
 
 
 

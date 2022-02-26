@@ -59,6 +59,6 @@ func toggle() -> void:
 
 func set_mouse_filter_of_children(node:Node, filter:int) -> void:
 	if node is Button:
-		node.mouse_filter = filter
+		(node as Button).mouse_filter = filter
 	for child in node.get_children():
 		set_mouse_filter_of_children(child, filter)

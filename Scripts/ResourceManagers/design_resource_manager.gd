@@ -8,9 +8,9 @@ var shaders:Dictionary = {
 }
 
 var base_tile_sets:Dictionary = {
-	floor = preload("res://Assets/Tiles/Build/tres/floor_24x24_tile_set.tres"),
-	walls = preload("res://Assets/Tiles/Build/tres/structure_24x72_tile_set.tres"),
-	roof = preload("res://Assets/Tiles/Build/tres/roof_24x48_tile_set_2.tres")
+	floor = preload("res://Assets/Tiles/Build/tres/walls_isometric_50x100_tile_set.tres"),
+	walls = preload("res://Assets/Tiles/Build/tres/walls_isometric_50x100_tile_set.tres"),
+	roof = preload("res://Assets/Tiles/Build/tres/walls_isometric_50x100_tile_set.tres")
 }
 
 var texture_manager:DesignTextureManager = DesignTextureManager.new()

@@ -1,0 +1,306 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://addons/more_2d/nodes/drag/draggable.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Interface/Icons/png/hand_tap_icon.png" type="Texture" id=2]
+[ext_resource path="res://Nodes/PlacementGuide/drag_rect_guide.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Resources/grey_radial_gradient.tres" type="Texture" id=4]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Enter"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("HandIcon:rect_scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 0.5, 0.8 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("HandIcon:rect_scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 0.5, 0.8 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Float"
+length = 1.5
+loop = true
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("HandIcon:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, 0, 0, 0.5, 0, -10, -0.5, 0, 0.5, 0, 0, -0.5, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.75, 1.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.8, 0, 0, 0.5, 0, 1, -0.5, 0, 0.5, 0, 0.8, -0.5, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.75, 1.5 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "HideHand"
+length = 0.6
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("HandIcon:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, 0, 0, 0.2, 0, 1.2, -0.1, 0, 0.2, 0, 1e-05, 0, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("HandIcon:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, 0, 0, 0.2, 0, 1.2, -0.1, 0, 0.2, 0, 1e-05, 0, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("HandIcon:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, 0, 0, 0.2, 0, 20, -0.1, 0, 0.2, 0, -50, 0, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("HandIcon:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("HandIcon:rect_scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("HandIcon:rect_scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:rect_scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath(".:rect_scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float speed = 0.25; // chagne to lower value like 0.1 to watch the movement
+uniform float size = 0.25; // the flash beam size
+uniform float strength = 0.25; // the color strength, you can change to -1 to test
+uniform float slope = 0.5; // the flash slope
+	
+void fragment(){
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	float position = 1.0 - fract(TIME * speed) * 2.0; // this makes the value from -1 to 1, you can also change to 1 to -1 in reverse
+	position = position + SCREEN_UV.y * slope; // calculate the position with y otherwise your beam is vertical
+	float x_left = position - size * 0.5; //beam left position by size
+	float x_right = position + size * 0.5; //right position by size
+	
+	if (SCREEN_UV.x >= x_left && SCREEN_UV.x <= x_right) {
+		color.rgb += vec3(strength); //do your trick to make flash color
+	} else {
+		color.rgb = color.rgb; //keep the original color, you can also delete this line
+	}
+	
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/speed = 0.25
+shader_param/size = 0.1
+shader_param/strength = 0.25
+shader_param/slope = 0.75
+
+[node name="PlacementGuide" type="Node2D"]
+script = ExtResource( 3 )
+size = Vector2( 200, 100 )
+snap_to_grid = false
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../GuideRect")
+anims/Enter = SubResource( 6 )
+anims/Float = SubResource( 2 )
+anims/HideHand = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="GuideRect" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 100 )
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 50, 50 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="GuideRect"]
+position = Vector2( 19.9995, 19.9995 )
+scale = Vector2( 1e-05, 1e-05 )
+rect = Rect2( 0, 0, 100, 100 )
+
+[node name="GradientContainer" type="MarginContainer" parent="GuideRect"]
+modulate = Color( 1, 1, 1, 0.490196 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = -70
+custom_constants/margin_top = -70
+custom_constants/margin_left = -70
+custom_constants/margin_bottom = -70
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="TextureRect" parent="GuideRect/GradientContainer"]
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 170.0
+margin_bottom = 170.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rect" type="Polygon2D" parent="GuideRect"]
+position = Vector2( 50, 50 )
+color = Color( 1, 1, 1, 0.490196 )
+offset = Vector2( -100, -50 )
+antialiased = true
+invert_border = 3.0
+polygon = PoolVector2Array( 0, 50, 100, 100, 200, 50, 100, 0 )
+
+[node name="Shine" type="Polygon2D" parent="GuideRect/Rect"]
+show_behind_parent = true
+material = SubResource( 8 )
+offset = Vector2( -100, -50 )
+antialiased = true
+polygon = PoolVector2Array( 0, 50, 100, 100, 200, 50, 100, 0 )
+
+[node name="HandIcon" type="TextureRect" parent="GuideRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 70, 80 )
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Draggable" type="Node2D" parent="."]
+script = ExtResource( 1 )
+unhandled_only = false
+TouchAreaShape = Rect2( 0, 0, 200, 100 )
+allow_camera_scroll = false

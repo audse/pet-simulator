@@ -1,6 +1,90 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=16 format=2]
 
+[ext_resource path="res://Scenes/Objects/Building/Components/input_controller.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/Building/Components/render_controller.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/Building/Components/input_renderer.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Objects/Building/building.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Objects/Building/Components/map_component.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Tiles/Build/tres/walls_isometric_50x100_tile_set.tres" type="TileSet" id=6]
+[ext_resource path="res://addons/more_nodes/nodes/share_resource.gd" type="Script" id=7]
+[ext_resource path="res://addons/more_2d/nodes/drag/handles/guide_map_handle_group.gd" type="Script" id=8]
+[ext_resource path="res://addons/more_2d/nodes/drag/handles/arrow_guide_map_handle_group.gd" type="Script" id=9]
+[ext_resource path="res://addons/more_nodes/nodes/queue.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Interface/Buttons/Pixel/png/marker_button.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Interface/Icons/pixel/pencil_icon.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Interface/Icons/pixel/x_icon.png" type="Texture" id=13]
+[ext_resource path="res://Nodes/Control/PopButton/pop_button.gd" type="Script" id=14]
+[ext_resource path="res://addons/autotiler/autotiler.gd" type="Script" id=15]
 
 [node name="Building" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="ShareResource" type="Node" parent="."]
+script = ExtResource( 7 )
+nodes = [ NodePath(".."), NodePath("../InputController"), NodePath("../InputController/InputRenderer"), NodePath("../RenderController") ]
+property_names = [ "data" ]
+logging_enabled = false
+
+[node name="RenderController" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Autotiler" type="Node" parent="RenderController"]
+script = ExtResource( 15 )
+
+[node name="BaseMap" type="TileMap" parent="RenderController"]
+mode = 1
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 48, 24 )
+format = 1
+script = ExtResource( 5 )
+
+[node name="InputController" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="InputRenderer" type="Node2D" parent="InputController"]
+script = ExtResource( 3 )
+
+[node name="Queue" type="Node" parent="InputController/InputRenderer"]
+script = ExtResource( 10 )
+base_node_path = NodePath("..")
+
+[node name="GuideMapHandleGroup" type="Node2D" parent="InputController/InputRenderer"]
+z_index = 10
+script = ExtResource( 8 )
+is_autotile = true
+
+[node name="ArrowGuideMapHandleGroup" type="Node2D" parent="InputController/InputRenderer"]
+z_index = 10
+script = ExtResource( 9 )
+is_autotile = true
+
+[node name="MarkerButton" type="TextureButton" parent="InputController/InputRenderer"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 11 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+hide_on_start = true
+modulate_options = {
+"active": Color( 1, 1, 1, 1 ),
+"inactive": Color( 0.807843, 0.168627, 0.27451, 1 )
+}
+
+[node name="PencilIcon" type="Sprite" parent="InputController/InputRenderer/MarkerButton"]
+visible = false
+modulate = Color( 0.301961, 0.341176, 0.372549, 1 )
+texture = ExtResource( 12 )
+centered = false
+offset = Vector2( 11, 4 )
+
+[node name="XIcon" type="Sprite" parent="InputController/InputRenderer/MarkerButton"]
+visible = false
+self_modulate = Color( 0.807843, 0.168627, 0.27451, 1 )
+texture = ExtResource( 13 )
+centered = false
+offset = Vector2( 10, 4 )
